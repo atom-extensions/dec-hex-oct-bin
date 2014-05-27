@@ -7,5 +7,4 @@ To do :
 * better user experience and looks
 * maybe active mode, that updates values when cursor is moved.
 
-
 ![A screenshot of your spankin' package](https://f.cloud.github.com/assets/69169/2290250/c35d867a-a017-11e3-86be-cd7c5bf3ff9b.gif)
