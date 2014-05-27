@@ -1,0 +1,14 @@
+{
+  "name": "dec-hex-oct-bin",
+  "main": "./lib/dec-hex-oct-bin",
+  "version": "0.0.0",
+  "description": "Append a helper panel to your right, and click buttons to get decimal, hex, octal and binary representation at value under cursor.",
+  "activationEvents": ["dec-hex-oct-bin:toggle"],
+  "repository": "https://github.com/atom/dec-hex-oct-bin",
+  "license": "MIT",
+  "engines": {
+    "atom": ">0.50.0"
+  },
+  "dependencies": {
+  }
+}
