@@ -8,4 +8,4 @@ To do :
 * maybe active mode, that updates values when cursor is moved.
 
 
-![A screenshot of dec-hex-oct-bin](https://raw.githubusercontent.com/wiki/erkkikeranen/dec-hex-oct-bin/screenshot.png)
+![A screenshot of dec-hex-oct-bin](https://raw.githubusercontent.com/wiki/erkkikeranen/dec-hex-oct-bin/screenshot.tiff)
