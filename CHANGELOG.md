@@ -1,2 +1,5 @@
+## 0.1.1 - Minimal fixes
+* Small invisible cosmetics
+
 ## 0.1.0 - First Release
 * Basic functionality
