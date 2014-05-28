@@ -1,7 +1,7 @@
 {
   "name": "dec-hex-oct-bin",
   "main": "./lib/dec-hex-oct-bin",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Helper panel to convert values.",
   "activationEvents": [
     "dec-hex-oct-bin:toggle"
