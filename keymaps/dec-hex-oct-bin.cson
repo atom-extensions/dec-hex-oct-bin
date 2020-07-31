@@ -7,5 +7,6 @@
 
 # For more detailed documentation see
 # https://atom.io/docs/latest/advanced/keymaps
-'.workspace':
+'atom-workspace':
+  'alt-h': 'dec-hex-oct-bin:toggle'
   'cmd-alt-h': 'dec-hex-oct-bin:toggle'
