@@ -1,6 +1,6 @@
 # dec-hex-oct-bin package
 [![Dependency status](https://david-dm.org/atom-extensions/dec-hex-oct-bin.svg)](https://david-dm.org/atom-extensions/dec-hex-oct-bin)
-[![Project: Takeover](https://img.shields.io/badge/Project-Takeover-silver.svg)](https://github.com/atom-extensions/dec-hex-oct-bin/issues)
+[![Project: Takeover](https://img.shields.io/badge/Project-Refactoring-blue.svg)](https://github.com/atom-extensions/dec-hex-oct-bin/issues)
 
 Append a helper panel to your right, and click buttons to get decimal, hex, octal and binary representation at value under cursor.
 
