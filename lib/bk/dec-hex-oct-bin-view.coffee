@@ -1,4 +1,4 @@
-{View} = require 'atom'
+{$, View} = require 'atom-space-pen-views'
 
 module.exports =
 class DecHexOctBinView extends View
@@ -27,7 +27,7 @@ class DecHexOctBinView extends View
 
 
   initialize: (serializeState) ->
-    atom.workspaceView.command "dec-hex-oct-bin:toggle", => @toggle()
+    #atom.workspace.command "dec-hex-oct-bin:toggle", => @toggle() //atom.workspace.toggle @getURI()
 
   # Returns an object that can be retrieved when package is activated
   serialize: ->

@@ -3,7 +3,7 @@
 [![Project: Takeover](https://img.shields.io/badge/Project-Refactoring-blue.svg)](https://github.com/atom-extensions/dec-hex-oct-bin/issues)
 
 Append a helper panel to your right, and click buttons to get decimal, hex, octal and binary representation at value under cursor.
-
+Please choose the input type by clicking the corresponding button.
 _![Screenshot](https://raw.githubusercontent.com/wiki/atom-extensions/dec-hex-oct-bin/screenshot.png)_
 
 ## To do

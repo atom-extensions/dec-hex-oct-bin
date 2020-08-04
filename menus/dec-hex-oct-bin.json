@@ -1,0 +1,42 @@
+{
+  "context-menu": {
+    "atom-text-editor": [
+      {
+        "label": "Number conversion panel",
+        "submenu": [
+          {
+            "label": "Parse selection",
+            "command": "dec-hex-oct-bin:parse"
+          },
+          {
+            "label": "Parse selection as decimal",
+            "command": "dec-hex-oct-bin:parse-decimal"
+          },
+          {
+            "label": "Parse selection as hex",
+            "command": "dec-hex-oct-bin:parse-hex"
+          },
+          {
+            "label": "Parse selection as octal",
+            "command": "dec-hex-oct-bin:parse-octal"
+          },
+          {
+            "label": "Parse selection as binary",
+            "command": "adec-hex-oct-bin:parse-binary"
+          }
+        ]
+      }
+    ]
+  },
+  "menu": [
+    {
+      "label": "View",
+      "submenu": [
+        {
+          "label": "Toggle number conversion panel",
+          "command": "dec-hex-oct-bin:toggle"
+        }
+      ]
+    }
+  ]
+}

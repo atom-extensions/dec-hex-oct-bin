@@ -4,6 +4,9 @@
   "version": "0.1.3",
   "description": "Helper panel to convert values.",
   "keywords": [],
+  "deserializers": {
+    "dec-hex-oct-bin/DecHexOctBinView": "deserializeDecHexOctBinView"
+  },
   "activationCommands": {
     "atom-workspace": "dec-hex-oct-bin:toggle"
   },
