@@ -63,12 +63,36 @@ describe('DecHexOctBin', () => {
       expect(decHexOctBinElement.querySelector('#binary').textContent).toBe("1011");
     });
 
+    it("as decimal with button", async () => {
+      textEditor.setText("11");
+      textEditor.selectAll();
+      const decHexOctBinElement = workspaceElement.querySelector('.dec-hex-oct-bin');
+      decHexOctBinElement.querySelector('#parse-decimal').click();
+      await DecHexOctBin.view.update();
+      expect(decHexOctBinElement.querySelector('#decimal').textContent).toBe("11");
+      expect(decHexOctBinElement.querySelector('#hex').textContent).toBe("b");
+      expect(decHexOctBinElement.querySelector('#octal').textContent).toBe("13");
+      expect(decHexOctBinElement.querySelector('#binary').textContent).toBe("1011");
+    });
+
     it("as hex", async () => {
       textEditor.setText("11");
       textEditor.selectAll();
       atom.commands.dispatch(textEditor.getElement(), 'dec-hex-oct-bin:parse-hex');
       await DecHexOctBin.view.update();
       const decHexOctBinElement = workspaceElement.querySelector('.dec-hex-oct-bin');
+      expect(decHexOctBinElement.querySelector('#decimal').textContent).toBe("17");
+      expect(decHexOctBinElement.querySelector('#hex').textContent).toBe("11");
+      expect(decHexOctBinElement.querySelector('#octal').textContent).toBe("21");
+      expect(decHexOctBinElement.querySelector('#binary').textContent).toBe("10001");
+    });
+
+    it("as hex with button", async () => {
+      textEditor.setText("11");
+      textEditor.selectAll();
+      const decHexOctBinElement = workspaceElement.querySelector('.dec-hex-oct-bin');
+      decHexOctBinElement.querySelector('#parse-hex').click();
+      await DecHexOctBin.view.update();
       expect(decHexOctBinElement.querySelector('#decimal').textContent).toBe("17");
       expect(decHexOctBinElement.querySelector('#hex').textContent).toBe("11");
       expect(decHexOctBinElement.querySelector('#octal').textContent).toBe("21");
@@ -87,6 +111,18 @@ describe('DecHexOctBin', () => {
       expect(decHexOctBinElement.querySelector('#binary').textContent).toBe("1001");
     });
 
+    it("as octal with button", async () => {
+      textEditor.setText("11");
+      textEditor.selectAll();
+      const decHexOctBinElement = workspaceElement.querySelector('.dec-hex-oct-bin');
+      decHexOctBinElement.querySelector('#parse-octal').click();
+      await DecHexOctBin.view.update();
+      expect(decHexOctBinElement.querySelector('#decimal').textContent).toBe("9");
+      expect(decHexOctBinElement.querySelector('#hex').textContent).toBe("9");
+      expect(decHexOctBinElement.querySelector('#octal').textContent).toBe("11");
+      expect(decHexOctBinElement.querySelector('#binary').textContent).toBe("1001");
+    });
+
     it("as binary", async () => {
       textEditor.setText("11");
       textEditor.selectAll();
@@ -97,6 +133,65 @@ describe('DecHexOctBin', () => {
       expect(decHexOctBinElement.querySelector('#hex').textContent).toBe("3");
       expect(decHexOctBinElement.querySelector('#octal').textContent).toBe("3");
       expect(decHexOctBinElement.querySelector('#binary').textContent).toBe("11");
+    });
+
+    it("as binary with button", async () => {
+      textEditor.setText("11");
+      textEditor.selectAll();
+      const decHexOctBinElement = workspaceElement.querySelector('.dec-hex-oct-bin');
+      decHexOctBinElement.querySelector('#parse-binary').click();
+      await DecHexOctBin.view.update();
+      expect(decHexOctBinElement.querySelector('#decimal').textContent).toBe("3");
+      expect(decHexOctBinElement.querySelector('#hex').textContent).toBe("3");
+      expect(decHexOctBinElement.querySelector('#octal').textContent).toBe("3");
+      expect(decHexOctBinElement.querySelector('#binary').textContent).toBe("11");
+    });
+  });
+
+  describe("copies text", () => {
+    beforeEach(async () => {
+      atom.commands.dispatch(workspaceElement, 'dec-hex-oct-bin:toggle');
+      await activationPromise;
+    });
+
+    it("copies decimal text", async () => {
+      const decHexOctBinElement = workspaceElement.querySelector('.dec-hex-oct-bin');
+      const element = decHexOctBinElement.querySelector('#decimal')
+      element.textContent = "copied";
+      atom.clipboard.write("not copied");
+      expect(atom.clipboard.read()).not.toBe("copied");
+      element.click();
+      expect(atom.clipboard.read()).toBe("copied");
+    });
+
+    it("copies hex text", async () => {
+      const decHexOctBinElement = workspaceElement.querySelector('.dec-hex-oct-bin');
+      const element = decHexOctBinElement.querySelector('#hex')
+      element.textContent = "copied";
+      atom.clipboard.write("not copied");
+      expect(atom.clipboard.read()).not.toBe("copied");
+      element.click();
+      expect(atom.clipboard.read()).toBe("copied");
+    });
+
+    it("copies octal text", async () => {
+      const decHexOctBinElement = workspaceElement.querySelector('.dec-hex-oct-bin');
+      const element = decHexOctBinElement.querySelector('#octal')
+      element.textContent = "copied";
+      atom.clipboard.write("not copied");
+      expect(atom.clipboard.read()).not.toBe("copied");
+      element.click();
+      expect(atom.clipboard.read()).toBe("copied");
+    });
+
+    it("copies binary text", async () => {
+      const decHexOctBinElement = workspaceElement.querySelector('.dec-hex-oct-bin');
+      const element = decHexOctBinElement.querySelector('#binary')
+      element.textContent = "copied";
+      atom.clipboard.write("not copied");
+      expect(atom.clipboard.read()).not.toBe("copied");
+      element.click();
+      expect(atom.clipboard.read()).toBe("copied");
     });
   });
 });
