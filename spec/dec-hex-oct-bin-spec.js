@@ -19,12 +19,6 @@ describe('DecHexOctBin', () => {
     it('hides and shows the view', async () => {
       // This test shows you an integration test testing at the view level.
 
-      // Attaching the workspaceElement to the DOM is required to allow the
-      // `toBeVisible()` matchers to work. Anything testing visibility or focus
-      // requires that the workspaceElement is on the DOM. Tests that attach the
-      // workspaceElement to the DOM are generally slower than those off DOM.
-      jasmine.attachToDOM(workspaceElement);
-
       expect(workspaceElement.querySelector('.dec-hex-oct-bin')).not.toExist();
 
       // This is an activation event, triggering it causes the package to be
@@ -33,13 +27,17 @@ describe('DecHexOctBin', () => {
 
       await activationPromise;
 
+      expect(workspaceElement.querySelector('.dec-hex-oct-bin')).toExist();
+
       // Now we can test for view visibility
-      const decHexOctBinElement = workspaceElement.querySelector('.dec-hex-oct-bin');
-      expect(decHexOctBinElement).toBeVisible();
-      spyOn(atom.workspace, "toggle").and.callThrough();
+      const pane = atom.workspace.paneForItem(DecHexOctBin.view);
+      const dock = atom.workspace.getRightDock();
+      expect(pane.getContainer().getLocation()).toBe("right");
+      expect(dock.isVisible()).toBe(true);
+
+      // Hide view
       atom.commands.dispatch(workspaceElement, 'dec-hex-oct-bin:toggle');
-      expect(atom.workspace.toggle).toHaveBeenCalledWith(DecHexOctBin.view.getURI())
-      // expect(decHexOctBinElement).not.toBeVisible();
+      expect(dock.isVisible()).toBe(false);
     });
   });
 
