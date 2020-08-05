@@ -1,4 +1,4 @@
-'use babel';
+/** @babel */
 
 import DecHexOctBin from '../lib/dec-hex-oct-bin';
 
@@ -16,33 +16,7 @@ describe('DecHexOctBin', () => {
   });
 
   describe('when the dec-hex-oct-bin:toggle event is triggered', () => {
-    it('hides and shows the modal panel', () => {
-      // Before the activation event the view is not on the DOM, and no panel
-      // has been created
-      expect(workspaceElement.querySelector('.dec-hex-oct-bin')).not.toExist();
-
-      // This is an activation event, triggering it will cause the package to be
-      // activated.
-      atom.commands.dispatch(workspaceElement, 'dec-hex-oct-bin:toggle');
-
-      waitsForPromise(() => {
-        return activationPromise;
-      });
-
-      runs(() => {
-        expect(workspaceElement.querySelector('.dec-hex-oct-bin')).toExist();
-
-        let decHexOctBinElement = workspaceElement.querySelector('.dec-hex-oct-bin');
-        expect(decHexOctBinElement).toExist();
-
-        let decHexOctBinPanel = atom.workspace.panelForItem(decHexOctBinElement);
-        expect(decHexOctBinPanel.isVisible()).toBe(true);
-        atom.commands.dispatch(workspaceElement, 'dec-hex-oct-bin:toggle');
-        expect(decHexOctBinPanel.isVisible()).toBe(false);
-      });
-    });
-
-    it('hides and shows the view', () => {
+    it('hides and shows the view', async () => {
       // This test shows you an integration test testing at the view level.
 
       // Attaching the workspaceElement to the DOM is required to allow the
@@ -57,17 +31,72 @@ describe('DecHexOctBin', () => {
       // activated.
       atom.commands.dispatch(workspaceElement, 'dec-hex-oct-bin:toggle');
 
-      waitsForPromise(() => {
-        return activationPromise;
-      });
+      await activationPromise;
 
-      runs(() => {
-        // Now we can test for view visibility
-        let decHexOctBinElement = workspaceElement.querySelector('.dec-hex-oct-bin');
-        expect(decHexOctBinElement).toBeVisible();
-        atom.commands.dispatch(workspaceElement, 'dec-hex-oct-bin:toggle');
-        expect(decHexOctBinElement).not.toBeVisible();
-      });
+      // Now we can test for view visibility
+      const decHexOctBinElement = workspaceElement.querySelector('.dec-hex-oct-bin');
+      expect(decHexOctBinElement).toBeVisible();
+      spyOn(atom.workspace, "toggle").and.callThrough();
+      atom.commands.dispatch(workspaceElement, 'dec-hex-oct-bin:toggle');
+      expect(atom.workspace.toggle).toHaveBeenCalledWith(DecHexOctBin.view.getURI())
+      // expect(decHexOctBinElement).not.toBeVisible();
+    });
+  });
+
+  describe("parsing selected text", () => {
+    let textEditor;
+    beforeEach(async () => {
+      atom.commands.dispatch(workspaceElement, 'dec-hex-oct-bin:toggle');
+      await activationPromise;
+      textEditor = await atom.workspace.open();
+    });
+
+    it("as decimal", async () => {
+      textEditor.setText("11");
+      textEditor.selectAll();
+      atom.commands.dispatch(textEditor.getElement(), 'dec-hex-oct-bin:parse-decimal');
+      await DecHexOctBin.view.update();
+      const decHexOctBinElement = workspaceElement.querySelector('.dec-hex-oct-bin');
+      expect(decHexOctBinElement.querySelector('#decimal').textContent).toBe("11");
+      expect(decHexOctBinElement.querySelector('#hex').textContent).toBe("b");
+      expect(decHexOctBinElement.querySelector('#octal').textContent).toBe("13");
+      expect(decHexOctBinElement.querySelector('#binary').textContent).toBe("1011");
+    });
+
+    it("as hex", async () => {
+      textEditor.setText("11");
+      textEditor.selectAll();
+      atom.commands.dispatch(textEditor.getElement(), 'dec-hex-oct-bin:parse-hex');
+      await DecHexOctBin.view.update();
+      const decHexOctBinElement = workspaceElement.querySelector('.dec-hex-oct-bin');
+      expect(decHexOctBinElement.querySelector('#decimal').textContent).toBe("17");
+      expect(decHexOctBinElement.querySelector('#hex').textContent).toBe("11");
+      expect(decHexOctBinElement.querySelector('#octal').textContent).toBe("21");
+      expect(decHexOctBinElement.querySelector('#binary').textContent).toBe("10001");
+    });
+
+    it("as octal", async () => {
+      textEditor.setText("11");
+      textEditor.selectAll();
+      atom.commands.dispatch(textEditor.getElement(), 'dec-hex-oct-bin:parse-octal');
+      await DecHexOctBin.view.update();
+      const decHexOctBinElement = workspaceElement.querySelector('.dec-hex-oct-bin');
+      expect(decHexOctBinElement.querySelector('#decimal').textContent).toBe("9");
+      expect(decHexOctBinElement.querySelector('#hex').textContent).toBe("9");
+      expect(decHexOctBinElement.querySelector('#octal').textContent).toBe("11");
+      expect(decHexOctBinElement.querySelector('#binary').textContent).toBe("1001");
+    });
+
+    it("as binary", async () => {
+      textEditor.setText("11");
+      textEditor.selectAll();
+      atom.commands.dispatch(textEditor.getElement(), 'dec-hex-oct-bin:parse-binary');
+      await DecHexOctBin.view.update();
+      const decHexOctBinElement = workspaceElement.querySelector('.dec-hex-oct-bin');
+      expect(decHexOctBinElement.querySelector('#decimal').textContent).toBe("3");
+      expect(decHexOctBinElement.querySelector('#hex').textContent).toBe("3");
+      expect(decHexOctBinElement.querySelector('#octal').textContent).toBe("3");
+      expect(decHexOctBinElement.querySelector('#binary').textContent).toBe("11");
     });
   });
 });

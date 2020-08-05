@@ -15,7 +15,19 @@
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
+  "atomTestRunner": "./spec/runner.js",
+  "scripts": {
+    "test": "atom --test spec",
+    "lint": "eslint ."
+  },
   "dependencies": {
     "etch": "^0.14.0"
+  },
+  "devDependencies": {
+    "@semantic-release/apm-config": "^8.0.0",
+    "atom-jasmine3-test-runner": "^5.0.5",
+    "eslint": "^7.6.0",
+    "eslint-plugin-react": "^7.20.5",
+    "semantic-release": "^17.1.1"
   }
 }
