@@ -2,9 +2,5 @@
   "atom-workspace": {
     "ctrl-alt-h": "dec-hex-oct-bin:toggle",
     "cmd-alt-h": "dec-hex-oct-bin:toggle"
-  },
-  "atom-text-editor": {
-    "ctrl-h": "dec-hex-oct-bin:parse",
-    "cmd-h": "dec-hex-oct-bin:parse"
   }
 }

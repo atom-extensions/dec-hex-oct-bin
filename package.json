@@ -1,7 +1,7 @@
 {
   "name": "dec-hex-oct-bin",
   "main": "./lib/dec-hex-oct-bin",
-  "version": "0.1.3",
+  "version": "1.0.0",
   "description": "Helper panel to convert values.",
   "keywords": [],
   "deserializers": {
