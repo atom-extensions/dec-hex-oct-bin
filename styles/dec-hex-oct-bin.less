@@ -1,0 +1,40 @@
+// The ui-variables file is provided by base themes provided by Atom.
+//
+// See https://github.com/atom/atom-dark-ui/blob/master/styles/ui-variables.less
+// for a full listing of what's available.
+@import "ui-variables";
+
+.dec-hex-oct-bin {
+  .row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    .col {
+      flex: 0;
+      min-width: 6em;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      button {
+        padding: 0;
+        width: 100%;
+      }
+    }
+    .number {
+      flex: 3 3 0;
+      cursor: copy;
+    }
+  }
+}
+
+.dec-hex-oct-bin.wide {
+  display: flex;
+  .row {
+    display: block;
+    flex: 1;
+    background-color: rgba(0, 0, 0, 0);
+    .col {
+      text-align: center;
+    }
+  }
+}

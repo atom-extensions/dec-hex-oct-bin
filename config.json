@@ -1,0 +1,21 @@
+{
+    "ui": {
+        "title": "User interface",
+        "description": "Adjust the behavior of the user interface.",
+        "type": "object",
+        "collapsed": false,
+        "order": 1,
+        "properties": {
+            "orientation": {
+                "title": "Design orientation",
+                "type": "string",
+                "order": 1,
+                "default": "",
+                "enum": [
+                    {"value": "", "description": "vertical"},
+                    {"value": "wide", "description": "horizontal"}
+                ]
+            }
+        }
+    }
+}
