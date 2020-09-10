@@ -1,3 +1,11 @@
+## [0.1.4](https://github.com/atom-extensions/dec-hex-oct-bin/compare/v0.1.3...v0.1.4) (2020-09-10)
+
+
+### Bug Fixes
+
+* save deserialized view ([7ff83d7](https://github.com/atom-extensions/dec-hex-oct-bin/commit/7ff83d7886229535364bb1f3cbe746283895bcf2))
+* use etch for view rendering ([858eadb](https://github.com/atom-extensions/dec-hex-oct-bin/commit/858eadbbc9b696657c0828d8e7657176826a769b))
+
 # Changelog
 
 ## 1.0.0 - Complete rewrite
