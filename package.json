@@ -21,7 +21,7 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "etch": "^0.14.0"
+    "etch": "^0.14.1"
   },
   "devDependencies": {
     "@semantic-release/apm-config": "^8.0.0",
