@@ -17,7 +17,7 @@ jobs:
         channel: [stable, beta]
     runs-on: ${{ matrix.os }}
     steps:
-    - uses: actions/checkout@v2.3.4
+    - uses: actions/checkout@v3.2.0
     - uses: UziTech/action-setup-atom@v1
       with:
         channel: ${{ matrix.channel }}
@@ -34,7 +34,7 @@ jobs:
     if: "!contains(github.event.head_commit.message, '[skip ci]')"
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.4
+      - uses: actions/checkout@v3.2.0
       - uses: dcodeIO/setup-node-nvm@master
         with:
           node-version: 'lts/*'
@@ -50,7 +50,7 @@ jobs:
       github.event.repository.fork == false
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2.3.4
+      - uses: actions/checkout@v3.2.0
       - uses: UziTech/action-setup-atom@v1
       - uses: dcodeIO/setup-node-nvm@master
         with:
